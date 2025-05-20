@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User Service Models
+model User {
+  id        String   @id @default(uuid())
+  firstName String
+  lastName  String
+  email     String   @unique
+  password  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+  Log Log[]
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+// Parking Service Models
+model Parking {
+  id           String   @id @default(uuid())
+  code         String   @unique
+  name         String
+  totalSpaces  Int
+  availableSpaces Int
+  location     String
+  hourlyFee    Decimal  @db.Decimal(10, 2)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  entries      Entry[]
+
+  @@map("parkings")
+}
+
+// Vehicle Service Models
+model Entry {
+  id           String    @id @default(uuid())
+  plateNumber  String
+  parking      Parking   @relation(fields: [parkingCode], references: [code])
+  parkingCode  String
+  entryDateTime DateTime  @default(now())
+  exitDateTime  DateTime?
+  chargedAmount Decimal?  @db.Decimal(10, 2)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@map("entries")
+}
+
+
+model Log {
+    id String @id @default(uuid()) 
+    userId String? 
+    action String 
+    createdAt DateTime @default(now()) 
+    user User? @relation(fields: [userId], references: [id], onDelete: SetNull) 
+}
