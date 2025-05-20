@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable no-useless-catch */
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { unauthorizedAPI } from '../constants/api';
-import { log } from 'console';
+// import { log } from 'console';
 
 interface User {
   id: string;

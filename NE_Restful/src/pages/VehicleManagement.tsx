@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+
 import { toast } from 'react-hot-toast';
 import { useUser } from '../context/UserContext';
-import { Car, Plus, LogIn, LogOut, Printer } from 'lucide-react';
+import {  Plus,  LogOut, Printer } from 'lucide-react';
 import { format, formatDistanceStrict } from 'date-fns';
 import { authorizedAPI } from '../constants/api';
 
@@ -298,7 +298,7 @@ const VehicleManagement: React.FC = () => {
         </div>
         <button
           onClick={() => setShowEntryForm(!showEntryForm)}
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center"
+          className="bg-black text-white px-4 py-2 rounded-lg flex items-center"
         >
           {showEntryForm ? 'Cancel' : (
             <>

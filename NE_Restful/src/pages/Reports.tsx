@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useUser } from '../context/UserContext';
+
 import { BarChart3, Download, Car, DollarSign } from 'lucide-react';
 import { format } from 'date-fns';
 import { authorizedAPI } from '../constants/api';
@@ -21,7 +22,7 @@ interface ReportSummary {
 }
 
 const Reports: React.FC = () => {
-  const { user } = useUser();
+ 
   const [reportType, setReportType] = useState<'entries' | 'exits'>('entries');
   const [startDate, setStartDate] = useState<string>(format(new Date().setDate(new Date().getDate() - 7), 'yyyy-MM-dd'));
   const [endDate, setEndDate] = useState<string>(format(new Date(), 'yyyy-MM-dd'));
@@ -171,7 +172,7 @@ const Reports: React.FC = () => {
             <button
               onClick={generateReport}
               disabled={loading}
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200 disabled:bg-blue-400 flex items-center justify-center"
+              className="w-full bg-black text-white py-2 px-4 rounded-lg hover:bg-black-700 transition duration-200 disabled:bg-black-400 flex items-center justify-center"
             >
               {loading ? (
                 <span className="flex items-center">

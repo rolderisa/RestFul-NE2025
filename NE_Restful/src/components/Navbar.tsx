@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
   if (!isAuthenticated) return null;
 
   return (
-    <nav className="bg-blue-600 text-white shadow-md">
+    <nav className="bg-black text-white shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-2">
@@ -24,19 +24,19 @@ const Navbar: React.FC = () => {
           </div>
           
           <div className="hidden md:flex space-x-6">
-            <Link to="/dashboard" className="flex items-center space-x-1 hover:text-blue-200">
+            <Link to="/dashboard" className="flex items-center space-x-1 hover:text-gray-300">
               <Home size={18} />
               <span>Dashboard</span>
             </Link>
-            <Link to="/parking" className="flex items-center space-x-1 hover:text-blue-200">
+            <Link to="/parking" className="flex items-center space-x-1 hover:text-gray-300">
               <ParkingCircle size={18} />
               <span>Parking</span>
             </Link>
-            <Link to="/vehicles" className="flex items-center space-x-1 hover:text-blue-200">
+            <Link to="/vehicles" className="flex items-center space-x-1 hover:text-gray-300">
               <Car size={18} />
               <span>Vehicles</span>
             </Link>
-            <Link to="/reports" className="flex items-center space-x-1 hover:text-blue-200">
+            <Link to="/reports" className="flex items-center space-x-1 hover:text-gray-300">
               <BarChart3 size={18} />
               <span>Reports</span>
             </Link>
